@@ -45,6 +45,7 @@ namespace BehavioralInformatix.CallER.Client
             Contract.Requires<ArgumentNullException>(http != null);
             Contract.Requires<ArgumentNullException>(uri != null);
             Contract.Requires<ArgumentNullException>(token != null);
+            Contract.Requires<ArgumentOutOfRangeException>(clientId > 0);
 
             this.http = http;
             Uri = uri;
@@ -179,6 +180,7 @@ namespace BehavioralInformatix.CallER.Client
         /// Sends a new caller request with an audio file upload.
         /// </summary>
         /// <param name="media"></param>
+        /// <param name="mediaType"></param>
         /// <param name="job"></param>
         /// <returns></returns>
         public async Task<CallERProcessInfo> PostJobAsync(Stream media, string mediaType, CallERJob job)
@@ -211,9 +213,9 @@ namespace BehavioralInformatix.CallER.Client
             Contract.Requires<ArgumentNullException>(job != null);
 
             // serialize job as JSON and append as query args
-            foreach (var arg in JObject.FromObject(job).Properties().ToDictionary(i => i.Name, i => JTokenToQueryArg(i.Value)))
+            foreach (var arg in JObject.FromObject(job).Properties())
                 if (arg.Value != null)
-                    uri.AppendQuery(arg.Key, arg.Value);
+                    uri.AppendQuery(arg.Name, JTokenToQueryArgValue(arg.Value));
         }
 
         /// <summary>
@@ -221,14 +223,16 @@ namespace BehavioralInformatix.CallER.Client
         /// </summary>
         /// <param name="token"></param>
         /// <returns></returns>
-        string JTokenToQueryArg(JToken token)
+        string JTokenToQueryArgValue(JToken token)
         {
             Contract.Requires<ArgumentNullException>(token != null);
 
             switch (token.Type)
             {
                 case JTokenType.Array:
-                    return string.Join(",", ((JArray)token).Select(i => i.Value<string>()));
+                    return string.Join(",", ((JArray)token).Select(i => (string)i));
+                case JTokenType.Object:
+                    throw new NotSupportedException();
                 default:
                     return (string)token;
             }
