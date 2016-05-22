@@ -29,7 +29,7 @@ namespace BehavioralInformatix.CallER.Client
         /// <summary>
         /// Label of the processing job (Client defined).
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace BehavioralInformatix.CallER.Client
         /// <summary>
         /// Duration of the audio signal.
         /// </summary>
-        [JsonProperty("duration")]
+        [JsonProperty("duration", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(TimeSpanAsSecondsJsonConverter))]
         public TimeSpan? Duration { get; set; }
 
@@ -60,44 +60,44 @@ namespace BehavioralInformatix.CallER.Client
         /// <summary>
         /// Where to find stored audio data in client's datastore in CallER cloud.
         /// </summary>
-        [JsonProperty("uri")]
+        [JsonProperty("uri", NullValueHandling = NullValueHandling.Ignore)]
         public string Uri { get; set; }
 
         /// <summary>
         /// For internal system use.
         /// </summary>
-        [JsonProperty("internal")]
+        [JsonProperty("internal", NullValueHandling = NullValueHandling.Ignore)]
         public string Internal { get; set; }
 
         /// <summary>
         /// The Customer's ID.
         /// </summary>
-        [JsonProperty("customerId")]
+        [JsonProperty("customerId", NullValueHandling = NullValueHandling.Ignore)]
         public string CustomerId { get; set; }
 
         /// <summary>
         /// The Customer's Industry index.
         /// </summary>
-        [JsonProperty("customerInd")]
+        [JsonProperty("customerInd", NullValueHandling = NullValueHandling.Ignore)]
         public string CustomerIndustryIndex { get; set; }
 
         /// <summary>
         /// Agent's ID.
         /// </summary>
-        [JsonProperty("agentId")]
+        [JsonProperty("agentId", NullValueHandling = NullValueHandling.Ignore)]
         public string AgentId { get; set; }
 
         /// <summary>
         /// Agent’s team ID.
         /// </summary>
-        [JsonProperty("agentTeam")]
+        [JsonProperty("agentTeam", NullValueHandling = NullValueHandling.Ignore)]
         public string AgentTeam { get; set; }
 
         /// <summary>
         /// Campaign's ID.
         /// </summary>
-        [JsonProperty("campaignId")]
-        public string CampaignID { get; set; }
+        [JsonProperty("campaignId", NullValueHandling = NullValueHandling.Ignore)]
+        public string CampaignId { get; set; }
 
         /// <summary>
         /// The type of call.
@@ -108,13 +108,13 @@ namespace BehavioralInformatix.CallER.Client
         /// <summary>
         /// Call time.
         /// </summary>
-        [JsonProperty("calltime")]
+        [JsonProperty("calltime", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime? CallTime { get; set; }
 
         /// <summary>
         /// Timezone of call.
         /// </summary>
-        [JsonProperty("timezone")]
+        [JsonProperty("timezone", NullValueHandling = NullValueHandling.Ignore)]
         public int? TimeZone { get; set; }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace BehavioralInformatix.CallER.Client
         /// <summary>
         /// ANI information.
         /// </summary>
-        [JsonProperty("ANI")]
+        [JsonProperty("ANI", NullValueHandling = NullValueHandling.Ignore)]
         public string ANI { get; set; }
 
         /// <summary>

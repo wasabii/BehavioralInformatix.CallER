@@ -15,13 +15,13 @@ namespace BehavioralInformatix.CallER.Client.Tests
         {
             var c = new CallERClient(new Uri("https://callerapi.behavioralinformatix.com:8443/"), "dsJ@hw3!6@82KGw23$ns", 3526153);
             //var s = await c.PostJobAsync(
-            //    new Uri("https://drive.google.com/uc?export=download&id=0Bz69ubgLdcLTMVQ4LVJwbjZtcWc"),
+            //    new Uri("https://drive.google.com/uc?export=download&id=0Bz69ubgLdcLTZEoxakZfdU5yYTg"),
             //    new CallERJob()
             //    {
-            //        Channels = 1,
+            //        Channels = 2,
             //        CallDirection = CallERCallDirection.Outgoing,
             //    });
-            var s = await c.GetProcessAsync(269047);
+            var s = await c.GetProcessAsync(269072);
             var r = await c.GetProcessResultAsync(s.ProcessId);
         }
 
