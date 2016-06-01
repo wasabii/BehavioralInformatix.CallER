@@ -10,7 +10,7 @@ namespace BehavioralInformatix.CallER.Client
     {
 
         [JsonProperty("cid")]
-        public int ClientId { get; set; }
+        public long ClientId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

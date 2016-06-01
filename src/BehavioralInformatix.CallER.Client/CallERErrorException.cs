@@ -21,7 +21,7 @@ namespace BehavioralInformatix.CallER.Client
         /// <param name="statusCode"></param>
         /// <param name="error"></param>
         public CallERErrorException(HttpStatusCode statusCode, CallERError error)
-            : base(error.Message)
+            : base(error?.Message)
         {
             this.statusCode = statusCode;
             this.error = error;
@@ -34,7 +34,7 @@ namespace BehavioralInformatix.CallER.Client
         /// <param name="error"></param>
         /// <param name="innerException"></param>
         public CallERErrorException(HttpStatusCode statusCode,CallERError error, Exception innerException)
-            : base(error.Message, innerException)
+            : base(error?.Message, innerException)
         {
             this.statusCode = statusCode;
             this.error = error;

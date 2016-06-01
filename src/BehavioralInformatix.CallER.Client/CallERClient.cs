@@ -126,9 +126,7 @@ namespace BehavioralInformatix.CallER.Client
                 return JsonConvert.DeserializeObject<TResult>(await response.Content.ReadAsStringAsync());
 
             // throw response as exception
-            throw new CallERErrorException(
-                response.StatusCode,
-                JsonConvert.DeserializeObject<CallERError>(await response.Content.ReadAsStringAsync()));
+            throw new CallERErrorException(response.StatusCode, JsonConvert.DeserializeObject<CallERError>(await response.Content.ReadAsStringAsync()));
         }
 
         /// <summary>
