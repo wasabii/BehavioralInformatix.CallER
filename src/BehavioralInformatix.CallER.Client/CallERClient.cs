@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
+
 using BehavioralInformatix.CallER.Client.Util;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -17,7 +17,10 @@ namespace BehavioralInformatix.CallER.Client
     public class CallERClient
     {
 
-        public const string DEFAULT_URI = "https://callerapi.behavioralinformatix.com/";
+        /// <summary>
+        /// Default CallER API URI.
+        /// </summary>
+        public static readonly Uri DefaultApiUri = new Uri("https://callerapi.behavioralinformatix.com/");
 
         readonly HttpClient http;
         Uri uri;
@@ -73,7 +76,7 @@ namespace BehavioralInformatix.CallER.Client
         /// <param name="token"></param>
         /// <param name="clientId"></param>
         public CallERClient(string token, long clientId)
-            : this(new Uri(DEFAULT_URI), token, clientId)
+            : this(DefaultApiUri, token, clientId)
         {
             Contract.Requires<ArgumentNullException>(token != null);
             Contract.Requires<ArgumentOutOfRangeException>(clientId > 0);
@@ -146,7 +149,6 @@ namespace BehavioralInformatix.CallER.Client
         /// <summary>
         /// Returns a client's details.
         /// </summary>
-        /// <param name="clientId"></param>
         /// <returns></returns>
         public async Task<CallERClientInfo> GetClientAsync()
         {

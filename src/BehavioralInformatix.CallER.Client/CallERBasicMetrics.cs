@@ -1,5 +1,7 @@
 ﻿using System;
+
 using BehavioralInformatix.CallER.Client.Util;
+
 using Newtonsoft.Json;
 
 namespace BehavioralInformatix.CallER.Client
